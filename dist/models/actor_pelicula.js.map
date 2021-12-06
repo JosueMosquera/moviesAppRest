@@ -1,0 +1,1 @@
+{"version":3,"file":"actor_pelicula.js","sourceRoot":"","sources":["../../models/actor_pelicula.ts"],"names":[],"mappings":";;;;;AAAA,yCAAsC;AACtC,kEAAkC;AAClC,MAAM,cAAc,GAAG,oBAAE,CAAC,MAAM,CAAC,gBAAgB,EAAC;IAC9C,WAAW,EAAC;QACR,IAAI,EAAC,qBAAS,CAAC,OAAO;KACzB;IACD,QAAQ,EAAC;QACL,IAAI,EAAC,qBAAS,CAAC,OAAO;KACzB;CACJ,CAAC,CAAC;AACH,kBAAe,cAAc,CAAA"}
