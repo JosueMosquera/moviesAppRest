@@ -54,14 +54,16 @@ export const postActor = async(req:Request,res:Response)=>{
 }
 export const putActor = async(req:Request,res:Response)=>{
     const {id} = req.params
-    const {body} = req
+    const {nombre,edad} = req.body
     const cloudinaryFile = req.files?.foto
     try {
          const actor = await Actor.findByPk(id)
          if(actor){
                 const {secure_url} = await cloudinaryCloud.uploader.upload(cloudinaryFile?.tempFilePath)
                  actor.set('foto',secure_url)
-                await actor.update(body);
+                actor.set('nombre',nombre)
+                actor.set('edad',edad)
+                actor.save()
                 res.json(actor)
          }
          else{
