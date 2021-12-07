@@ -55,9 +55,14 @@ export const postActor = async(req:Request,res:Response)=>{
 export const putActor = async(req:Request,res:Response)=>{
     const {id} = req.params
     const {body} = req
+    const fileCloudinary = req.files?.foto
     try {
          const actor = await Actor.findByPk(id)
          if(actor){
+            if(fileCloudinary){
+                const {secure_url} = await cloudinaryCloud.uploader.upload(fileCloudinary?.tempFilePath)
+                await actor.update({foto:secure_url})
+            } 
                 await actor.update(body);
                 res.json(actor)
          }
@@ -79,7 +84,7 @@ export const deleteActor = async(req:Request,res:Response)=>{
     try {
         const actor = await Actor.findByPk(id)
         if(actor){
-               await actor.update({estado:false});
+               await actor.destroy();
                res.json(actor)
         }
         else{

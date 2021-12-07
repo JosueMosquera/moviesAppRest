@@ -73,14 +73,15 @@ const putActor = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     var _b;
     const { id } = req.params;
     const { body } = req;
-    const cloudinaryFile = (_b = req.files) === null || _b === void 0 ? void 0 : _b.foto;
+    const fileCloudinary = (_b = req.files) === null || _b === void 0 ? void 0 : _b.foto;
     try {
         const actor = yield actor_1.default.findByPk(id);
         if (actor) {
-            const { secure_url } = yield cloudinaryCloud.uploader.upload(cloudinaryFile === null || cloudinaryFile === void 0 ? void 0 : cloudinaryFile.tempFilePath);
-            const actorPhoto = new actor_1.default(body);
-            actorPhoto.foto = secure_url;
-            yield actor.save();
+            if (fileCloudinary) {
+                const { secure_url } = yield cloudinaryCloud.uploader.upload(fileCloudinary === null || fileCloudinary === void 0 ? void 0 : fileCloudinary.tempFilePath);
+                yield actor.update({ foto: secure_url });
+            }
+            yield actor.update(body);
             res.json(actor);
         }
         else {
@@ -101,7 +102,7 @@ const deleteActor = (req, res) => __awaiter(void 0, void 0, void 0, function* ()
     try {
         const actor = yield actor_1.default.findByPk(id);
         if (actor) {
-            yield actor.update({ estado: false });
+            yield actor.destroy();
             res.json(actor);
         }
         else {
