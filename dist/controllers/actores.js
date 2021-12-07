@@ -70,12 +70,17 @@ const postActor = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
 });
 exports.postActor = postActor;
 const putActor = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
+    var _b;
     const { id } = req.params;
     const { body } = req;
+    const cloudinaryFile = (_b = req.files) === null || _b === void 0 ? void 0 : _b.foto;
     try {
         const actor = yield actor_1.default.findByPk(id);
         if (actor) {
-            yield actor.update(body);
+            const { secure_url } = yield cloudinaryCloud.uploader.upload(cloudinaryFile === null || cloudinaryFile === void 0 ? void 0 : cloudinaryFile.tempFilePath);
+            const actorPhoto = new actor_1.default(body);
+            actorPhoto.foto = secure_url;
+            yield actor.save();
             res.json(actor);
         }
         else {
