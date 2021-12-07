@@ -12,6 +12,9 @@ const Pelicula = db.define('pelicula',{
   },
   sinopsis:{
       type:DataTypes.TEXT
+  },
+  actores:{
+      type:DataTypes.TEXT
   }
 });
 export default Pelicula;
