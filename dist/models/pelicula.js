@@ -17,6 +17,9 @@ const Pelicula = connection_1.default.define('pelicula', {
     },
     sinopsis: {
         type: sequelize_1.DataTypes.TEXT
+    },
+    actores: {
+        type: sequelize_1.DataTypes.TEXT
     }
 });
 exports.default = Pelicula;
