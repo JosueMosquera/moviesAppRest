@@ -60,9 +60,8 @@ export const putActor = async(req:Request,res:Response)=>{
          const actor = await Actor.findByPk(id)
          if(actor){
                 const {secure_url} = await cloudinaryCloud.uploader.upload(cloudinaryFile?.tempFilePath)
-                const actorPhoto = new Actor(body)
-                actorPhoto.foto=secure_url
-                await actor.update(actorPhoto);
+                 actor.set('foto',secure_url)
+                await actor.update(body);
                 res.json(actor)
          }
          else{
