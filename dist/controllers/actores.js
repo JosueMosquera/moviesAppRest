@@ -113,7 +113,7 @@ const deleteActor = (req, res) => __awaiter(void 0, void 0, void 0, function* ()
     }
     catch (error) {
         res.status(500).json({
-            msg: 'error'
+            msg: error
         });
     }
 });

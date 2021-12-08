@@ -95,7 +95,7 @@ export const deleteActor = async(req:Request,res:Response)=>{
        
    } catch (error) {
        res.status(500).json({
-           msg:'error'
+           msg:error
        })
    }
 }
