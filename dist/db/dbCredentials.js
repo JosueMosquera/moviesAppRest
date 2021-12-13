@@ -3,8 +3,8 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.dbCredentials = void 0;
 exports.dbCredentials = {
     HOSTDB: 'sql5.freesqldatabase.com',
-    DATABASENAME: 'sql5456921',
-    USERDB: 'sql5456921',
-    PASDB: 'Pj3diGu8ps'
+    DATABASENAME: 'sql5458649',
+    USERDB: 'sql5458649',
+    PASDB: 'T4etcJPfUb'
 };
 //# sourceMappingURL=dbCredentials.js.map
